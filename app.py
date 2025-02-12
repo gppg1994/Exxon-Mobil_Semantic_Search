@@ -24,7 +24,7 @@ def read_yaml(yaml_file_path):
             #streamlit.write(yaml_files)
             with open(yaml_files,'r',encoding='utf-8') as fp:
                 yaml_data=yaml.safe_load(fp)
-                all_data.append(yaml_data)
+                all_data.append(str(yaml_data))
                 fp.close()
     semantic_model="\n".join(all_data)
     return semantic_model
