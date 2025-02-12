@@ -1,0 +1,7 @@
+PyYAML
+langchain-core
+dotenv
+os
+json
+langchain-openai
+streamlit
