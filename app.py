@@ -5,7 +5,7 @@ from langchain_core.runnables import RunnableSequence
 from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 import os
-import json
+import logging
 
 load_dotenv()
 
@@ -17,10 +17,11 @@ AZURE_OPENAI_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION")
 
 #Read semantic model
 def read_yaml(yaml_file_path):
+    logger=logging.getLogger()
     all_data=[]
     for yaml_files in os.listdir(yaml_file_path):
         if yaml_files.endswith(".yaml"):
-            print(yaml_files)
+            logger.info(yaml_files)
             with open(yaml_files,'r',encoding='utf-8') as fp:
                 yaml_data=yaml.safe_load(fp)
                 all_data.append(yaml_data)
