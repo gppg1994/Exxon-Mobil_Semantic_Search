@@ -21,7 +21,7 @@ def read_yaml(yaml_file_path):
     all_data=[]
     for yaml_files in os.listdir(yaml_file_path):
         if yaml_files.endswith(".yaml"):
-            streamlit.write(yaml_files)
+            #streamlit.write(yaml_files)
             with open(yaml_files,'r',encoding='utf-8') as fp:
                 yaml_data=yaml.safe_load(fp)
                 all_data.append(yaml_data)
