@@ -1,7 +1,8 @@
 PyYAML
 langchain-core
-dotenv
+pythpn-dotenv
 os
 json
 langchain-openai
 streamlit
+snowflake-connector-python
