@@ -1,6 +1,6 @@
 PyYAML
 langchain-core
-pythpn-dotenv
+python-dotenv
 os
 json
 langchain-openai
