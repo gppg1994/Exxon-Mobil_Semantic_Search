@@ -6,7 +6,7 @@ from langchain_core.output_parsers import StrOutputParser
 from dotenv import load_dotenv
 import os
 import logging
-import streamlit
+import streamlit as st
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -17,16 +17,19 @@ AZURE_OPENAI_API_VERSION = os.getenv("AZURE_OPENAI_API_VERSION")
 
 #Read semantic model
 def read_yaml(yaml_file_path):
-    logger=logging.getLogger()
-    all_data=[]
-    for yaml_files in os.listdir(yaml_file_path):
-        if yaml_files.endswith(".yaml"):
-            #streamlit.write(yaml_files)
-            with open(yaml_files,'r',encoding='utf-8') as fp:
-                yaml_data=yaml.safe_load(fp)
-                all_data.append(str(yaml_data))
-                fp.close()
-    semantic_model="\n".join(all_data)
+    if 'yaml_data' not in st.session_state:
+        all_data=[]
+        for yaml_files in os.listdir(yaml_file_path):
+            if yaml_files.endswith(".yaml"):
+                #streamlit.write(yaml_files)
+                with open(yaml_files,'r',encoding='utf-8') as fp:
+                    yaml_data=yaml.safe_load(fp)
+                    all_data.append(str(yaml_data))
+                    fp.close()
+        semantic_model="\n".join(all_data)
+        st.session_state.yaml_data=semantic_model
+    else:
+        semantic_model=st.session_state.yaml_data
     return semantic_model
     """ with open('data.json', 'w') as outfile:
         json.dump(all_data,outfile) """
