@@ -26,7 +26,7 @@ def read_yaml(yaml_file_path):
                 yaml_data=yaml.safe_load(fp)
                 all_data.append(yaml_data)
                 fp.close()
-    semantic_model=all_data
+    semantic_model="\n".join(all_data)
     return semantic_model
     """ with open('data.json', 'w') as outfile:
         json.dump(all_data,outfile) """
